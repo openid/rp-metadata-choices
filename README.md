@@ -1,38 +1,22 @@
-# OpenID Federation 1.0
+# OpenID Connect Relying Party Metadata Choices 1.0
 
-This repository contains the OpenID Federation specification, which has been migrated from [Bitbucket](https://bitbucket.org/openid/connect/src/master/) to the OpenID Foundation's GitHub.
-The OpenID Federation specification defines protocols and guidelines for implementing federated infrastructures among different domains and services.
+This repository contains the OpenID Connect Relying Party Metadata Choices specification.
 
-## Overview
-
-OpenID Federation 1.0 is:
-
-- a technical specification that shows us how to evaluate the Trust from a technical perspective,
-- a technology that defines how to build trust infrastructures,
-- a system for securely establishing the interoperability of participants.
-
-## Status
-
-News about OpenID Federation is available at the OpenID Foundation website [here](https://openid.net/tag/federation/).
-
-The latest released draft of the specification is available at [https://openid.net/specs/openid-federation-1_0.html](https://openid.net/specs/openid-federation-1_0.html).
-The most recent Implementer's Draft is available at [https://openid.net/specs/openid-federation-1_0-ID4.html](https://openid.net/specs/openid-federation-1_0-ID4.html).
+This specification extends the OpenID Connect Dynamic Client Registration 1.0 specification to enable RPs to express a set of supported values for some RP metadata parameters, rather than just single values. This functionality is particularly useful when Automatic Registration, as defined in OpenID Federation 1.0, is used, since there is no registration response from the OP to tell the RP what choices were made by the OP.
 
 ## Builds
 
-You can view the latest editors' draft at [https://openid.github.io/federation/main.html](https://openid.github.io/federation/main.html).
+The latest released draft of the specification is available at [https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html](https://openid.net/specs/openid-connect-rp-metadata-choices-1_0.html).
 
-Previews for each branch of this project are automatically built and published at the URL https://openid.github.io/federation/$branchname.html.
+You can view the latest editors' draft at [https://openid.github.io/rp-metadata-choices/main.html](https://openid.github.io/rp-metadata-choices/main.html).
+
+Previews for each branch of this project are automatically built and published at the URL https://openid.github.io/rp-metadata-choices/$branchname.html.
 Previews for branches associated with pending Pull Requests are accessible using this pattern.
 
-## Getting Started
-To get started working on the OpenID Federation specification, clone this repository and review the documentation provided in the root directory.
+## Build the HTML ##
 
-````bash
-git clone https://github.com/openid/federation.git
-cd federation
-````
-Please read the [CONTRIBUTING.md](CONTRIBUTING.md) to learn how to contribute to this project.
+```docker run -v `pwd`:/data danielfett/markdown2rfc openid-connect-rp-metadata-choices-1_0.md```
 
 ## Contact
+
 For further information and to get involved, please visit the [OpenID Connect Working Group website](https://openid.net/wg/connect/).
