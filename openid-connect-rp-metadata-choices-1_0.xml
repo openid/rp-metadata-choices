@@ -25,8 +25,7 @@
 
   <front>
     <title abbrev="OpenID Connect RP Metadata Choices">OpenID Connect
-    Relying Party Metadata Choices 1.0 - draft 00
-    </title>
+    Relying Party Metadata Choices 1.0 - draft 01</title>
 
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
       <organization abbrev="Self-Issued Consulting">Self-Issued Consulting</organization>
@@ -51,7 +50,7 @@
       </address>
     </author>
 
-    <date day="29" month="September" year="2024" />
+    <date day="30" month="October" year="2024" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -818,6 +817,15 @@
 
     <section anchor="History" title="Document History">
       <t>[[ To be removed from the approved Final Specification ]]</t>
+
+      <t>
+	-01
+        <list style="symbols">
+	  <t>
+	    Incremented draft number following working group adoption.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-00
