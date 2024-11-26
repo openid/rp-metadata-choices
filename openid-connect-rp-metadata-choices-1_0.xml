@@ -50,7 +50,7 @@
       </address>
     </author>
 
-    <date day="30" month="October" year="2024" />
+    <date day="20" month="November" year="2024" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -69,6 +69,8 @@
 	as defined in OpenID Federation 1.0,
 	is used, since there is no registration response from the OP
 	to tell the RP what choices were made by the OP.
+	This gives the OP the information that it needs to make choices about
+	how to interact with the RP in ways that work for both parties.
       </t>
     </abstract>
   </front>
@@ -98,6 +100,8 @@
 	<xref target="OpenID.Federation"/>
 	is used, since there is no registration response from the OP
 	to tell the RP what choices were made by the OP.
+	This gives the OP the information that it needs to make choices about
+	how to interact with the RP in ways that work for both parties.
       </t>
 
       <section anchor="rnc" title="Requirements Notation and Conventions">
@@ -158,6 +162,14 @@
 	since it gives the OP the best opportunity to make good choices
 	of what parameters to use when interacting with the RP.
 	This specification is intended to faciliate such interactions.
+      </t>
+      <t>
+	The Client Metadata values defined below MUST only be used
+	as input values to registration requests,
+	and not
+	as output values in registration responses and read responses.
+	Any output values used related to these multi-valued input parameters
+	MUST be the associated corresponding single-valued metadata parameter.
       </t>
       <t>
 	These Client Metadata values are defined by this specification:
@@ -767,9 +779,13 @@
 
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>
-        The authors wish to acknowledge the contributions of the following
-        people to this specification:
-        Stefan Santesson.
+	The authors wish to acknowledge the contributions of the following
+	people to this specification:
+	Vladimir Dzhuvinov,
+	Joseph Heenan,
+	Stefan Santesson,
+	and
+	Filip Skokan.
       </t>
     </section>
 
@@ -822,7 +838,9 @@
 	-01
         <list style="symbols">
 	  <t>
-	    Incremented draft number following working group adoption.
+	    Specified that the multi-valued metadata parameters defined herein
+	    are to be used as registration request parameters
+	    and not as registration response parameters.
 	  </t>
 	</list>
       </t>
