@@ -22,12 +22,14 @@
  as defined in OpenID Federation 1.0,
  is used, since there is no registration response from the OP
  to tell the RP what choices were made by the OP.
+ This gives the OP the information that it needs to make choices about
+ how to interact with the RP in ways that work for both parties.
        
     " name="description">
-<meta content="xml2rfc 3.24.0" name="generator">
+<meta content="xml2rfc 3.25.0" name="generator">
 <meta content="openid-connect-rp-metadata-choices-1_0" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.24.0
+  xml2rfc 3.25.0
     Python 3.10.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
@@ -1224,7 +1226,7 @@ li > p:last-of-type:only-child {
 <thead><tr>
 <td class="left"></td>
 <td class="center">OpenID Connect RP Metadata Choices</td>
-<td class="right">October 2024</td>
+<td class="right">November 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jones, et al.</td>
@@ -1239,7 +1241,7 @@ li > p:last-of-type:only-child {
 <dd class="workgroup">OpenID Connect Working Group</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-30" class="published">30 October 2024</time>
+<time datetime="2024-11-20" class="published">20 November 2024</time>
     </dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
@@ -1273,7 +1275,9 @@ li > p:last-of-type:only-child {
  This functionality is particularly useful when Automatic Registration,
  as defined in OpenID Federation 1.0,
  is used, since there is no registration response from the OP
- to tell the RP what choices were made by the OP.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
+ to tell the RP what choices were made by the OP.
+ This gives the OP the information that it needs to make choices about
+ how to interact with the RP in ways that work for both parties.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <div id="toc">
 <section id="section-toc.1">
@@ -1363,7 +1367,9 @@ li > p:last-of-type:only-child {
  This functionality is particularly useful when Automatic Registration
  <span>[<a href="#OpenID.Federation" class="cite xref">OpenID.Federation</a>]</span>
  is used, since there is no registration response from the OP
- to tell the RP what choices were made by the OP.<a href="#section-1-2" class="pilcrow">¶</a></p>
+ to tell the RP what choices were made by the OP.
+ This gives the OP the information that it needs to make choices about
+ how to interact with the RP in ways that work for both parties.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <div id="rnc">
 <section id="section-1.1">
         <h3 id="name-requirements-notation-and-c">
@@ -1431,119 +1437,126 @@ li > p:last-of-type:only-child {
  of what parameters to use when interacting with the RP.
  This specification is intended to faciliate such interactions.<a href="#section-2-4" class="pilcrow">¶</a></p>
 <p id="section-2-5">
- These Client Metadata values are defined by this specification:<a href="#section-2-5" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-2-6">
-        <dt id="section-2-6.1">subject_types_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.2">
+ The Client Metadata values defined below MUST only be used
+ as input values to registration requests,
+ and not
+ as output values in registration responses and read responses.
+ Any output values used related to these multi-valued input parameters
+ MUST be the associated corresponding single-valued metadata parameter.<a href="#section-2-5" class="pilcrow">¶</a></p>
+<p id="section-2-6">
+ These Client Metadata values are defined by this specification:<a href="#section-2-6" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-2-7">
+        <dt id="section-2-7.1">subject_types_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.2">
      OPTIONAL.
      JSON array containing a list of the
      <code>subject_type</code>
      values supported by the RP.
      If a <code>subject_type</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.2" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.2" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.3">id_token_signing_alg_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.4">
+<dt id="section-2-7.3">id_token_signing_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.4">
      OPTIONAL.
      JSON array containing a list of the
      <span><a href="#JWS" class="internal xref">JWS</a> [<a href="#JWS" class="cite xref">JWS</a>]</span> <code>alg</code> values
      supported by the RP when validating the ID Token signature.
      If a <code>id_token_signed_response_alg</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.4" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.4" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.5">id_token_encryption_alg_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.6">
+<dt id="section-2-7.5">id_token_encryption_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.6">
      OPTIONAL.
      JSON array containing a list of the
      <span><a href="#JWE" class="internal xref">JWE</a> [<a href="#JWE" class="cite xref">JWE</a>]</span> <code>alg</code> values
      supported by the RP when decrypting the ID Token.
      If a <code>id_token_encrypted_response_alg</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.6" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.6" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.7">id_token_encryption_enc_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.8">
+<dt id="section-2-7.7">id_token_encryption_enc_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.8">
      OPTIONAL.
      JSON array containing a list of the
      JWE <code>enc</code> values
      supported by the RP when decrypting the ID Token.
      If a <code>id_token_encrypted_response_enc</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.8" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.8" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.9">userinfo_signing_alg_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.10">
+<dt id="section-2-7.9">userinfo_signing_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.10">
      OPTIONAL.
      JSON array containing a list of the
      JWS <code>alg</code> values
      supported by the RP when validating the UserInfo Response signature.
      If a <code>userinfo_signed_response_alg</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.10" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.10" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.11">userinfo_encryption_alg_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.12">
+<dt id="section-2-7.11">userinfo_encryption_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.12">
      OPTIONAL.
      JSON array containing a list of the
      JWE <code>alg</code> values
      supported by the RP when decrypting the UserInfo Response. 
      If a <code>userinfo_encrypted_response_alg</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.12" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.12" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.13">userinfo_encryption_enc_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.14">
+<dt id="section-2-7.13">userinfo_encryption_enc_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.14">
      OPTIONAL.
      JSON array containing a list of the
      JWE <code>enc</code> values
      supported by the RP when decrypting the UserInfo Response. 
      If a <code>userinfo_encrypted_response_enc</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.14" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.14" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.15">request_object_signing_alg_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.16">
+<dt id="section-2-7.15">request_object_signing_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.16">
      OPTIONAL.
      JSON array containing a list of the
      JWS <code>alg</code> values
      supported by the Client when signing Request Objects.
      If a <code>request_object_signing_alg</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.16" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.16" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.17">request_object_encryption_alg_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.18">
+<dt id="section-2-7.17">request_object_encryption_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.18">
      OPTIONAL.
      JSON array containing a list of the
      JWE <code>alg</code> values
      supported by the Client when encrypting Request Objects.
      If a <code>request_object_encryption_alg</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.18" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.18" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.19">request_object_encryption_enc_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.20">
+<dt id="section-2-7.19">request_object_encryption_enc_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.20">
      OPTIONAL.
      JSON array containing a list of the
      JWE <code>enc</code> values
      supported by the Client when encrypting Request Objects.
      If a <code>request_object_encryption_enc</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.20" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.20" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.21">token_endpoint_auth_methods_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.22">
+<dt id="section-2-7.21">token_endpoint_auth_methods_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.22">
      OPTIONAL.
      JSON array containing a list of the
      Client Authentication methods supported by the Client.
      If a <code>token_endpoint_auth_method</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.22" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.22" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-2-6.23">token_endpoint_auth_signing_alg_values_supported</dt>
-        <dd style="margin-left: 1.5em" id="section-2-6.24">
+<dt id="section-2-7.23">token_endpoint_auth_signing_alg_values_supported</dt>
+        <dd style="margin-left: 1.5em" id="section-2-7.24">
      OPTIONAL.
      JSON array containing a list of the
      JWS <code>alg</code> values
@@ -1552,13 +1565,13 @@ li > p:last-of-type:only-child {
      for the <code>private_key_jwt</code>
      and <code>client_secret_jwt</code> authentication methods.
      If a <code>token_endpoint_auth_signing_alg</code>
-     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-6.24" class="pilcrow">¶</a>
+     metadata parameter is also present, its value MUST be in the list.<a href="#section-2-7.24" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
 </dl>
-<p id="section-2-7">
+<p id="section-2-8">
  Additional Client Metadata parameters MAY be defined and used,
- as described in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#section-2-7" class="pilcrow">¶</a></p>
+ as described in <span>[<a href="#RFC7591" class="cite xref">RFC7591</a>]</span>.<a href="#section-2-8" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Security">
@@ -1923,9 +1936,13 @@ li > p:last-of-type:only-child {
 <a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
 <p id="appendix-A-1">
-        The authors wish to acknowledge the contributions of the following
-        people to this specification:
-        Stefan Santesson.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+ The authors wish to acknowledge the contributions of the following
+ people to this specification:
+ Vladimir Dzhuvinov,
+ Joseph Heenan,
+ Stefan Santesson,
+ and
+ Filip Skokan.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Notices">
@@ -1983,7 +2000,9 @@ li > p:last-of-type:only-child {
 <ul class="normal">
 <li class="normal" id="appendix-C-3.1">
           <p id="appendix-C-3.1.1">
-     Incremented draft number following working group adoption.<a href="#appendix-C-3.1.1" class="pilcrow">¶</a></p>
+     Specified that the multi-valued metadata parameters defined herein
+     are to be used as registration request parameters
+     and not as registration response parameters.<a href="#appendix-C-3.1.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="appendix-C-4">
