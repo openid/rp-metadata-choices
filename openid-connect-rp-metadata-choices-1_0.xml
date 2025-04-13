@@ -172,6 +172,12 @@
 	MUST be the associated corresponding single-valued metadata parameter.
       </t>
       <t>
+	In order to ensure interoperability with deployments that do not
+	support the values in this document, it is RECOMMENDED that RP 
+	deployments also include the associated corresponding single-valued
+	metadata parameter in their client metadata. 
+      </t>
+      <t>
 	These Client Metadata values are defined by this specification:
 
 	<list style="hanging">
