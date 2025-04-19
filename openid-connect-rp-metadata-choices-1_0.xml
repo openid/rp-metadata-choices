@@ -50,6 +50,13 @@
       </address>
     </author>
 
+    <author fullname="Filip Skokan" initials="F." surname="Skokan">
+      <organization>Okta</organization>
+      <address>
+        <email>panva.ip@gmail.com</email>
+      </address>
+    </author>
+
     <date day="19" month="April" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
@@ -413,7 +420,8 @@
       <t>
 	The security considerations when using these metadata parameters
 	are the same as those when using the correspoding metadata parameters in
-	<xref target="OpenID.Registration"/> and <xref target="OpenID.Discovery"/>.
+	<xref target="OpenID.Registration"/> and <xref target="OpenID.Discovery"/>
+	or the other specifications in which they are defined.
       </t>
     </section>
 
@@ -1117,6 +1125,9 @@
 	  <t>
 	    Documented the naming conventions used.
 	  </t>
+	  <t>
+	    Added Filip Skokan as an author.
+	  </t>
 	</list>
       </t>
 
@@ -1148,9 +1159,8 @@
 	people to this specification:
 	Vladimir Dzhuvinov,
 	Joseph Heenan,
-	Stefan Santesson,
 	and
-	Filip Skokan.
+	Stefan Santesson.
       </t>
     </section>
 
