@@ -50,7 +50,7 @@
       </address>
     </author>
 
-    <date day="18" month="April" year="2025" />
+    <date day="19" month="April" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -187,7 +187,7 @@
 	This specification is intended to faciliate such interactions.
       </t>
       <t>
-	The Client Metadata values defined below MUST only be used
+	The Client Metadata parameters defined below MUST only be used
 	as input values to registration requests,
 	and not
 	as output values in registration responses and read responses.
@@ -195,7 +195,7 @@
 	MUST be the associated corresponding single-valued metadata parameter.
       </t>
       <t>
-	These Client Metadata values are defined by this specification:
+	These Client Metadata parameters are defined by this specification:
 
 	<list style="hanging">
 
@@ -239,7 +239,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="userinfo_signed_response_alg_values_supported">
+	  <t hangText="userinfo_signing_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -249,7 +249,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="userinfo_encrypted_response_alg_values_supported">
+	  <t hangText="userinfo_encryption_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -259,7 +259,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="userinfo_encrypted_response_enc_values_supported">
+	  <t hangText="userinfo_encryption_enc_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -332,7 +332,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="authorization_signed_response_alg_values_supported">
+	  <t hangText="authorization_signing_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -342,7 +342,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="authorization_encrypted_response_alg_values_supported">
+	  <t hangText="authorization_encryption_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -352,7 +352,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="authorization_encrypted_response_enc_values_supported">
+	  <t hangText="authorization_encryption_enc_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -362,7 +362,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="introspection_signed_response_alg_values_supported">
+	  <t hangText="introspection_signing_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -372,7 +372,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="introspection_encrypted_response_alg_values_supported">
+	  <t hangText="introspection_encryption_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -382,7 +382,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="introspection_encrypted_response_enc_values_supported">
+	  <t hangText="introspection_encryption_enc_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -397,6 +397,15 @@
       <t>
 	Additional Client Metadata parameters MAY be defined and used,
 	as described in <xref target="RFC7591"/>.
+      </t>
+      <t>
+	Note that the naming convention used for these metadata parameters
+	is to use the name of the corresponding
+	Authorization Server Metadata parameter when it exists.
+	When it does not exist, the names chosen use the pattern
+	<spanx style="verb">*_values_supported</spanx>,
+	where <spanx style="verb">*</spanx> is the name of
+	the corresponding single-valued Client Metadata parameter.
       </t>
     </section>
 
@@ -497,7 +506,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">userinfo_signed_response_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">userinfo_signing_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -516,7 +525,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">userinfo_encrypted_response_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">userinfo_encryption_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -535,7 +544,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">userinfo_encrypted_response_enc_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">userinfo_encryption_enc_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -669,7 +678,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">authorization_signed_response_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">authorization_signing_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -688,7 +697,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">authorization_encrypted_response_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">authorization_encryption_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -707,7 +716,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">authorization_encrypted_response_enc_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">authorization_encryption_enc_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -726,7 +735,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">introspection_signed_response_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">introspection_signing_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -745,7 +754,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">introspection_encrypted_response_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">introspection_encryption_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -764,7 +773,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">introspection_encrypted_response_enc_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">introspection_encryption_enc_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -1104,6 +1113,9 @@
 	  <t>
 	    Added multi-valued metadata parameters based on single-valued metadata parameters
 	    in <xref target="CIBA.Core"/>, <xref target="JARM"/>, and <xref target="RFC9701"/>.
+	  </t>
+	  <t>
+	    Documented the naming conventions used.
 	  </t>
 	</list>
       </t>
