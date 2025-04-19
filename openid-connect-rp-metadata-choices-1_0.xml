@@ -25,7 +25,7 @@
 
   <front>
     <title abbrev="OpenID Connect RP Metadata Choices">OpenID Connect
-    Relying Party Metadata Choices 1.0 - draft 01</title>
+    Relying Party Metadata Choices 1.0 - draft 02</title>
 
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
       <organization abbrev="Self-Issued Consulting">Self-Issued Consulting</organization>
@@ -50,7 +50,7 @@
       </address>
     </author>
 
-    <date day="25" month="November" year="2024" />
+    <date day="18" month="April" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -58,7 +58,7 @@
       <t>OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0
       protocol. It enables Clients to verify the identity of the End-User based
       on the authentication performed by an Authorization Server, as well as to
-      obtain basic profile information about the End-User in an interoperable and 
+      obtain basic profile information about the End-User in an interoperable and
       REST-like manner.</t>
 
       <t>
@@ -83,7 +83,7 @@
 	<xref target="RFC6749"/>
 	protocol. It enables Clients to verify the identity of the End-User based
 	on the authentication performed by an Authorization Server, as well as to
-	obtain basic profile information about the End-User in an interoperable and 
+	obtain basic profile information about the End-User in an interoperable and
 	REST-like manner.
       </t>
       <t>
@@ -102,6 +102,29 @@
 	to tell the RP what choices were made by the OP.
 	This gives the OP the information that it needs to make choices about
 	how to interact with the RP in ways that work for both parties.
+      </t>
+      <t>
+	Single-valued metadata parameters for which corresponding
+	multi-valued metadata parameters are defined by this specification
+	are defined in these specifications:
+	<list style="symbols">
+	  <t>
+	    OpenID Connect Dynamic Client Registration 1.0
+	    <xref target="OpenID.Registration"/>
+	  </t>
+	  <t>
+	    OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0
+	    <xref target="CIBA.Core"/>
+	  </t>
+	  <t>
+	    JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)
+	    <xref target="JARM"/>
+	  </t>
+	  <t>
+	    JSON Web Token (JWT) Response for OAuth Token Introspection
+	    <xref target="RFC9701"/>
+	  </t>
+	</list>
       </t>
 
       <section anchor="rnc" title="Requirements Notation and Conventions">
@@ -195,7 +218,7 @@
 	    If a <spanx style="verb">id_token_signed_response_alg</spanx>
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
-	  
+
 	  <t hangText="id_token_encryption_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
@@ -216,7 +239,7 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="userinfo_signing_alg_values_supported">
+	  <t hangText="userinfo_signed_response_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
@@ -226,22 +249,22 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
-	  <t hangText="userinfo_encryption_alg_values_supported">
+	  <t hangText="userinfo_encrypted_response_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
 	    JWE <spanx style="verb">alg</spanx> values
-	    supported by the RP when decrypting the UserInfo Response. 
+	    supported by the RP when decrypting the UserInfo Response.
 	    If a <spanx style="verb">userinfo_encrypted_response_alg</spanx>
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
-	  
-	  <t hangText="userinfo_encryption_enc_values_supported">
+
+	  <t hangText="userinfo_encrypted_response_enc_values_supported">
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
 	    JWE <spanx style="verb">enc</spanx> values
-	    supported by the RP when decrypting the UserInfo Response. 
+	    supported by the RP when decrypting the UserInfo Response.
 	    If a <spanx style="verb">userinfo_encrypted_response_enc</spanx>
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
@@ -297,6 +320,78 @@
 	    If a <spanx style="verb">token_endpoint_auth_signing_alg</spanx>
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
+
+	  <t hangText="backchannel_authentication_request_signing_alg_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    JWS <spanx style="verb">alg</spanx> values
+	    supported by the Client when signing the JWT
+	    used for CIBA authentication requests.
+	    If a <spanx style="verb">backchannel_authentication_request_signing_alg</spanx>
+	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
+	  <t hangText="authorization_signed_response_alg_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    JWS <spanx style="verb">alg</spanx> values
+	    supported by the Client for signed responses.
+	    If a <spanx style="verb">authorization_signed_response_alg</spanx>
+	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
+	  <t hangText="authorization_encrypted_response_alg_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    JWE <spanx style="verb">alg</spanx> values
+	    supported by the Client for encrypted responses.
+	    If a <spanx style="verb">authorization_encrypted_response_alg</spanx>
+	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
+	  <t hangText="authorization_encrypted_response_enc_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    JWE <spanx style="verb">enc</spanx> values
+	    supported by the Client for encrypted responses.
+	    If a <spanx style="verb">authorization_encrypted_response_enc</spanx>
+	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
+	  <t hangText="introspection_signed_response_alg_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    JWS <spanx style="verb">alg</spanx> values
+	    supported by the Client when validating the Introspection Response signature.
+	    If a <spanx style="verb">introspection_signed_response_alg</spanx>
+	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
+	  <t hangText="introspection_encrypted_response_alg_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    JWE <spanx style="verb">alg</spanx> values
+	    supported by the Client when decrypting the Introspection Response.
+	    If a <spanx style="verb">introspection_encrypted_response_alg</spanx>
+	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
+	  <t hangText="introspection_encrypted_response_enc_values_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    JWE <spanx style="verb">enc</spanx> values
+	    supported by the Client when decrypting the Introspection Response.
+	    If a <spanx style="verb">introspection_encrypted_response_enc</spanx>
+	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
 	</list>
       </t>
       <t>
@@ -402,7 +497,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">userinfo_signing_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">userinfo_signed_response_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -421,7 +516,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">userinfo_encryption_alg_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">userinfo_encrypted_response_alg_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -440,7 +535,7 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
-		Client Metadata Name: <spanx style="verb">userinfo_encryption_enc_values_supported</spanx>
+		Client Metadata Name: <spanx style="verb">userinfo_encrypted_response_enc_values_supported</spanx>
 	      </t>
 	      <t>
 		Client Metadata Description:
@@ -551,6 +646,140 @@
 	      </t>
 	    </list>
 	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">backchannel_authentication_request_signing_alg_values_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		JWS <spanx style="verb">alg</spanx> values
+		supported by the Client when signing the JWT
+		used for CIBA authentication requests
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">authorization_signed_response_alg_values_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		JWS <spanx style="verb">alg</spanx> values
+		supported by the Client for signed responses
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">authorization_encrypted_response_alg_values_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		JWE <spanx style="verb">alg</spanx> values
+		supported by the Client for encrypted responses
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">authorization_encrypted_response_enc_values_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		JWE <spanx style="verb">enc</spanx> values
+		supported by the Client for encrypted responses
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">introspection_signed_response_alg_values_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		JWS <spanx style="verb">alg</spanx> values
+		supported by the Client when validating the Introspection Response signature
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">introspection_encrypted_response_alg_values_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		JWE <spanx style="verb">alg</spanx> values
+		supported by the Client when decrypting the Introspection Response
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">introspection_encrypted_response_enc_values_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		JWE <spanx style="verb">enc</spanx> values
+		supported by the Client when decrypting the Introspection Response
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
 	</section>
 	<?rfc subcompact="no"?>
       </section>
@@ -564,6 +793,7 @@
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml"/>
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9701.xml"/>
 
       <reference anchor="OpenID.Core" target="https://openid.net/specs/openid-connect-core-1_0.html">
         <front>
@@ -690,7 +920,7 @@
 	    </address>
 	  </author>
 
-          <date day="15" month="September" year="2024"/>
+          <date day="5" month="March" year="2025"/>
         </front>
       </reference>
 
@@ -769,6 +999,50 @@
         </front>
       </reference>
 
+      <reference anchor="JARM" target="https://openid.net/specs/oauth-v2-jarm.html">
+	<front>
+	  <title>JWT Secured Authorization Response Mode for OAuth 2.0 (JARM)</title>
+
+	  <author fullname="Torsten Lodderstedt" initials="T." surname="Lodderstedt">
+	    <organization>yes.com</organization>
+	  </author>
+
+	  <author fullname="Brian Campbell" initials="B." surname="Campbell">
+	    <organization>Ping Identity</organization>
+	  </author>
+
+          <date day="9" month="November" year="2022"/>
+	</front>
+      </reference>
+
+      <reference anchor="CIBA.Core" target="https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html">
+	<front>
+	  <title>OpenID Connect Client-Initiated Backchannel Authentication Flow - Core 1.0</title>
+
+	  <author fullname="Gonzalo Fernandez Rodriguez" initials="G." surname="Rodriguez">
+	    <organization>Telefonica I+D</organization>
+	  </author>
+
+	  <author fullname="Florian Walter" initials="F." surname="Walter">
+	    <organization>Deutsche Telekom AG</organization>
+	  </author>
+
+	  <author fullname="Axel Nennker" initials="A." surname="Nennker">
+	    <organization>Deutsche Telekom AG</organization>
+	  </author>
+
+	  <author fullname="Dave Tonge" initials="D." surname="Tonge">
+	    <organization>Moneyhub</organization>
+	  </author>
+
+	  <author fullname="Brian Campbell" initials="B." surname="Campbell">
+	    <organization>Ping Identity</organization>
+	  </author>
+
+          <date day="1" month="September" year="2021"/>
+	</front>
+      </reference>
+
     </references>
 
     <references title="Informative References">
@@ -778,49 +1052,61 @@
     </references>
 
     <section anchor="Notices" title="Notices">
-      <t>Copyright (c) 2024 The OpenID Foundation.</t>
       <t>
-	The OpenID Foundation (OIDF) grants to any Contributor, developer, 
-	implementer, or other interested party a non-exclusive, royalty free, 
-	worldwide copyright license to reproduce, prepare derivative works from, 
-	distribute, perform and display, this Implementers Draft or 
-	Final Specification solely for the purposes of (i) developing 
-	specifications, and (ii) implementing Implementers Drafts and 
-	Final Specifications based on such documents, provided that attribution 
-	be made to the OIDF as the source of the material, but that such attribution 
-	does not indicate an endorsement by the OIDF.
+        Copyright (c) 2025 The OpenID Foundation.
       </t>
       <t>
-	The technology described in this specification was 
-	made available from contributions from various sources, 
-	including members of the OpenID Foundation and others.  
-	Although the OpenID Foundation has taken steps to help ensure 
-	that the technology is available for distribution, it takes 
-	no position regarding the validity or scope of any intellectual 
-	property or other rights that might be claimed to pertain to 
-	the implementation or use of the technology described in 
-	this specification or the extent to which any license under 
-	such rights might or might not be available; neither does it 
-	represent that it has made any independent effort to identify 
-	any such rights.  The OpenID Foundation and the contributors 
-	to this specification make no (and hereby expressly disclaim any) 
-	warranties (express, implied, or otherwise), including implied 
-	warranties of merchantability, non-infringement, fitness for 
-	a particular purpose, or title, related to this specification, 
-	and the entire risk as to implementing this specification is 
-	assumed by the implementer.  The OpenID Intellectual 
-	Property Rights policy requires contributors to offer 
-	a patent promise not to assert certain patent claims against 
-	other contributors and against implementers.  The OpenID Foundation invites 
-	any interested party to bring to its attention any copyrights, 
-	patents, patent applications, or other proprietary rights 
-	that may cover technology that may be required to practice 
-	this specification.
+        The OpenID Foundation (OIDF) grants to any Contributor, developer,
+        implementer, or other interested party a non-exclusive, royalty free,
+        worldwide copyright license to reproduce, prepare derivative works from,
+        distribute, perform and display, this Implementers Draft, Final
+        Specification, or Final Specification Incorporating Errata Corrections
+        solely for the purposes of (i) developing specifications,
+        and (ii) implementing Implementers Drafts, Final Specifications,
+        and Final Specification Incorporating Errata Corrections based
+        on such documents, provided that attribution be made to the OIDF as the
+        source of the material, but that such attribution does not indicate an
+        endorsement by the OIDF.
+      </t>
+      <t>
+        The technology described in this specification was made available
+        from contributions from various sources, including members of the OpenID
+        Foundation and others. Although the OpenID Foundation has taken steps to
+        help ensure that the technology is available for distribution, it takes
+        no position regarding the validity or scope of any intellectual property
+        or other rights that might be claimed to pertain to the implementation
+        or use of the technology described in this specification or the extent
+        to which any license under such rights might or might not be available;
+        neither does it represent that it has made any independent effort to
+        identify any such rights. The OpenID Foundation and the contributors to
+        this specification make no (and hereby expressly disclaim any)
+        warranties (express, implied, or otherwise), including implied
+        warranties of merchantability, non-infringement, fitness for a
+        particular purpose, or title, related to this specification, and the
+        entire risk as to implementing this specification is assumed by the
+        implementer. The OpenID Intellectual Property Rights policy
+        (found at openid.net) requires
+        contributors to offer a patent promise not to assert certain patent
+        claims against other contributors and against implementers.
+        OpenID invites any interested party to bring to its attention any
+        copyrights, patents, patent applications, or other proprietary rights
+        that may cover technology that may be required to practice this
+        specification.
       </t>
     </section>
 
     <section anchor="History" title="Document History">
       <t>[[ To be removed from the approved Final Specification ]]</t>
+
+      <t>
+	-02
+        <list style="symbols">
+	  <t>
+	    Added multi-valued metadata parameters based on single-valued metadata parameters
+	    in <xref target="CIBA.Core"/>, <xref target="JARM"/>, and <xref target="RFC9701"/>.
+	  </t>
+	</list>
+      </t>
 
       <t>
 	-01
