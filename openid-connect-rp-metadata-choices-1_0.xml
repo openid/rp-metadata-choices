@@ -25,7 +25,7 @@
 
   <front>
     <title abbrev="OpenID Connect RP Metadata Choices">OpenID Connect
-    Relying Party Metadata Choices 1.0 - draft 01</title>
+    Relying Party Metadata Choices 1.0 - draft 02</title>
 
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
       <organization abbrev="Self-Issued Consulting">Self-Issued Consulting</organization>
@@ -50,7 +50,7 @@
       </address>
     </author>
 
-    <date day="25" month="November" year="2024" />
+    <date day="19" month="April" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -302,6 +302,36 @@
       <t>
 	Additional Client Metadata parameters MAY be defined and used,
 	as described in <xref target="RFC7591"/>.
+      </t>
+    </section>
+
+    <section anchor="ImplementationConsiderations" title="Implementation Considerations">
+      <t>
+	To faciliate interoperation with implementations not yet supporting
+	this specification, deployments may choose to include
+	the single-valued metadata parameter alongside
+	the corresponding multi-valued metadata parameter.
+	However, when the Authorization Server understands
+	the multi-valued metadata parameter, it is RECOMMENDED that
+	the multi-valued metadata parameter be used in preference to
+	the single-valued metadata parameter.
+      </t>
+      <t>
+	This preference is particularly important in the case when
+	the Authorization Server does not support the single-valued parameter value.
+	For instance, consider these metadata values:
+	<figure>
+          <artwork><![CDATA[
+  "id_token_signing_alg_values_supported": ["ES256", "PS256", "RS256"],
+  "id_token_signed_response_alg": "RS256"
+]]></artwork>
+        </figure>
+      </t>
+      <t>
+	Authorization Server SHOULD NOT consider it an error when it doesn't support
+	<spanx style="verb">RS256</spanx> if it supports either of the other choices
+	<spanx style="verb">ES256</spanx> or <spanx style="verb">PS256</spanx>.
+	It SHOULD use one of the choices that it does support.
       </t>
     </section>
 
@@ -823,6 +853,17 @@
       <t>[[ To be removed from the approved Final Specification ]]</t>
 
       <t>
+	-02
+        <list style="symbols">
+	  <t>
+	    Added Implementation Considerations about including
+	    the single-valued metadata parameter alongside
+	    the corresponding multi-valued metadata parameter.
+	  </t>
+	</list>
+      </t>
+
+      <t>
 	-01
         <list style="symbols">
 	  <t>
@@ -849,6 +890,7 @@
 	The authors wish to acknowledge the contributions of the following
 	people to this specification:
 	Vladimir Dzhuvinov,
+	Michael Fraser,
 	Joseph Heenan,
 	Stefan Santesson,
 	and
