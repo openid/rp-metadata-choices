@@ -35,7 +35,7 @@
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.2
-    lxml 5.3.2
+    lxml 5.4.0
     platformdirs 4.3.7
     pycountry 24.6.1
     PyYAML 6.0.1
@@ -1583,14 +1583,11 @@ li > p:last-of-type:only-child {
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-implementation-consideratio" class="section-name selfRef">Implementation Considerations</a>
       </h2>
 <p id="section-3-1">
- To faciliate interoperation with implementations not yet supporting
- this specification, deployments may choose to include
+ To facilitate interoperability with implementations not supporting
+ this specification, deployments SHOULD include
  the single-valued metadata parameter alongside
- the corresponding multi-valued metadata parameter.
- However, when the Authorization Server understands
- the multi-valued metadata parameter, it is RECOMMENDED that
- the multi-valued metadata parameter be used in preference to
- the single-valued metadata parameter.<a href="#section-3-1" class="pilcrow">¶</a></p>
+ the corresponding multi-valued metadata parameter with their
+ preferred single value.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">
  This preference is particularly important in the case when
  the Authorization Server does not support the single-valued parameter value.
@@ -1605,7 +1602,7 @@ li > p:last-of-type:only-child {
  Authorization Server SHOULD NOT consider it an error when it doesn't support
  <code>RS256</code> if it supports either of the other choices
  <code>ES256</code> or <code>PS256</code>.
- It SHOULD use one of the choices that it does support.<a href="#section-3-4" class="pilcrow">¶</a></p>
+ It SHOULD use one of the choices that it does support, or reject the registration with the <code>invalid_client_metadata</code> error when none of the client-provided values are supported.<a href="#section-3-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Security">
