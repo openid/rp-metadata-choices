@@ -331,7 +331,7 @@
 	Authorization Server SHOULD NOT consider it an error when it doesn't support
 	<spanx style="verb">RS256</spanx> if it supports either of the other choices
 	<spanx style="verb">ES256</spanx> or <spanx style="verb">PS256</spanx>.
-	It SHOULD use one of the choices that it does support.
+	It SHOULD use one of the choices that it does support, or reject the registration with the <spanx style="verb">invalid_client_metadata</spanx> error when none of the client-provided values are supported.
       </t>
     </section>
 
