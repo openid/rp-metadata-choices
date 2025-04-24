@@ -57,7 +57,7 @@
       </address>
     </author>
 
-    <date day="21" month="April" year="2025" />
+    <date day="24" month="April" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -413,6 +413,33 @@
 	<spanx style="verb">*_values_supported</spanx>,
 	where <spanx style="verb">*</spanx> is the name of
 	the corresponding single-valued Client Metadata parameter.
+      </t>
+    </section>
+
+    <section anchor="ImplementationConsiderations" title="Implementation Considerations">
+      <t>
+	To facilitate interoperability with implementations not supporting
+	this specification, deployments SHOULD include
+	the single-valued metadata parameter alongside
+	the corresponding multi-valued metadata parameter with their
+	preferred single value.
+      </t>
+      <t>
+	This preference is particularly important in the case when
+	the Authorization Server does not support the single-valued parameter value.
+	For instance, consider these metadata values:
+	<figure>
+          <artwork><![CDATA[
+  "id_token_signing_alg_values_supported": ["ES256", "PS256", "RS256"],
+  "id_token_signed_response_alg": "RS256"
+]]></artwork>
+        </figure>
+      </t>
+      <t>
+	Authorization Server SHOULD NOT consider it an error when it doesn't support
+	<spanx style="verb">RS256</spanx> if it supports either of the other choices
+	<spanx style="verb">ES256</spanx> or <spanx style="verb">PS256</spanx>.
+	It SHOULD use one of the choices that it does support, or reject the registration with the <spanx style="verb">invalid_client_metadata</spanx> error when none of the client-provided values are supported.
       </t>
     </section>
 
@@ -1117,7 +1144,7 @@
 
       <t>
 	-02
-        <list style="symbols">
+  <list style="symbols">
 	  <t>
 	    Added multi-valued metadata parameters based on single-valued metadata parameters
 	    in <xref target="CIBA.Core"/>, <xref target="JARM"/>, and <xref target="RFC9701"/>.
@@ -1127,6 +1154,11 @@
 	  </t>
 	  <t>
 	    Added Filip Skokan as an author.
+	  </t>
+	  <t>
+	    Added Implementation Considerations about including
+	    the single-valued metadata parameter alongside
+	    the corresponding multi-valued metadata parameter.
 	  </t>
 	</list>
       </t>
@@ -1158,6 +1190,7 @@
 	The authors wish to acknowledge the contributions of the following
 	people to this specification:
 	Vladimir Dzhuvinov,
+	Michael Fraser,
 	Joseph Heenan,
 	and
 	Stefan Santesson.
