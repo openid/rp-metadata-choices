@@ -307,14 +307,11 @@
 
     <section anchor="ImplementationConsiderations" title="Implementation Considerations">
       <t>
-	To faciliate interoperation with implementations not yet supporting
-	this specification, deployments may choose to include
+	To facilitate interoperability with implementations not supporting
+	this specification, deployments SHOULD include
 	the single-valued metadata parameter alongside
-	the corresponding multi-valued metadata parameter.
-	However, when the Authorization Server understands
-	the multi-valued metadata parameter, it is RECOMMENDED that
-	the multi-valued metadata parameter be used in preference to
-	the single-valued metadata parameter.
+	the corresponding multi-valued metadata parameter with their
+	preferred single value.
       </t>
       <t>
 	This preference is particularly important in the case when
