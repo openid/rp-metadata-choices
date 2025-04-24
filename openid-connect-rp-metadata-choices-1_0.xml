@@ -425,8 +425,8 @@
 	preferred single value.
       </t>
       <t>
-	This preference is particularly important in the case when
-	the Authorization Server does not support the single-valued parameter value.
+	Note that
+	the Authorization Server might not support the single-valued parameter value.
 	For instance, consider these metadata values:
 	<figure>
           <artwork><![CDATA[
