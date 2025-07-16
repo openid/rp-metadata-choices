@@ -13,6 +13,7 @@
   be taken to indicate.
 -->
 <rfc category="std" docName="openid-connect-rp-metadata-choices-1_0" ipr="none"
+     submissionType="IETF" consensus="yes"
      xmlns:xi="http://www.w3.org/2001/XInclude">
 
   <?rfc toc="yes" ?>
@@ -25,7 +26,7 @@
 
   <front>
     <title abbrev="OpenID Connect RP Metadata Choices">OpenID Connect
-    Relying Party Metadata Choices 1.0 - draft 02</title>
+    Relying Party Metadata Choices 1.0 - draft 03</title>
 
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
       <organization abbrev="Self-Issued Consulting">Self-Issued Consulting</organization>
@@ -57,7 +58,7 @@
       </address>
     </author>
 
-    <date day="24" month="April" year="2025" />
+    <date day="15" month="July" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -310,7 +311,8 @@
 	    <vspace/>
 	    OPTIONAL.
 	    JSON array containing a list of the
-	    Client Authentication methods supported by the Client.
+	    Client Authentication methods supported by the Client
+	    at the Token Endpoint.
 	    If a <spanx style="verb">token_endpoint_auth_method</spanx>
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
@@ -369,6 +371,17 @@
 	    metadata parameter is also present, its value MUST be in the list.
 	  </t>
 
+	  <t hangText="introspection_endpoint_auth_methods_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    Client Authentication methods supported by the Client
+	    at the Introspection Endpoint.
+	    Note that no corresponding single-valued
+	    <spanx style="verb">introspection_endpoint_auth_method</spanx>
+	    Client Metadata parameter is defined for introspection.
+	  </t>
+
 	  <t hangText="introspection_signing_alg_values_supported">
 	    <vspace/>
 	    OPTIONAL.
@@ -397,6 +410,17 @@
 	    supported by the Client when decrypting the Introspection Response.
 	    If a <spanx style="verb">introspection_encrypted_response_enc</spanx>
 	    metadata parameter is also present, its value MUST be in the list.
+	  </t>
+
+	  <t hangText="revocation_endpoint_auth_methods_supported">
+	    <vspace/>
+	    OPTIONAL.
+	    JSON array containing a list of the
+	    Client Authentication methods supported by the Client
+	    at the Revocation Endpoint.
+	    Note that no corresponding single-valued
+	    <spanx style="verb">revocation_endpoint_auth_method</spanx>
+	    Client Metadata parameter is defined for revocation.
 	  </t>
 
 	</list>
@@ -430,8 +454,8 @@
 	For instance, consider these metadata values:
 	<figure>
           <artwork><![CDATA[
-  "id_token_signing_alg_values_supported": ["ES256", "PS256", "RS256"],
-  "id_token_signed_response_alg": "RS256"
+"id_token_signing_alg_values_supported": ["ES256", "PS256", "RS256"],
+"id_token_signed_response_alg": "RS256"
 ]]></artwork>
         </figure>
       </t>
@@ -661,6 +685,7 @@
 		Client Metadata Description:
 		JSON array containing a list of the
 		Client Authentication methods supported by the Client
+		at the Token Endpoint
 	      </t>
 	      <t>
 		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
@@ -770,6 +795,25 @@
 	  <t>
 	    <list style="symbols">
 	      <t>
+		Client Metadata Name: <spanx style="verb">introspection_endpoint_auth_methods_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		Client Authentication methods supported by the Client
+		at the Introspection Endpoint
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
 		Client Metadata Name: <spanx style="verb">introspection_signing_alg_values_supported</spanx>
 	      </t>
 	      <t>
@@ -815,6 +859,25 @@
 		JSON array containing a list of the
 		JWE <spanx style="verb">enc</spanx> values
 		supported by the Client when decrypting the Introspection Response
+	      </t>
+	      <t>
+		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
+	      </t>
+	      <t>
+		Specification Document(s): <xref target="ClientMetadata"/> of this specification
+	      </t>
+	    </list>
+	  </t>
+	  <t>
+	    <list style="symbols">
+	      <t>
+		Client Metadata Name: <spanx style="verb">revocation_endpoint_auth_methods_supported</spanx>
+	      </t>
+	      <t>
+		Client Metadata Description:
+		JSON array containing a list of the
+		Client Authentication methods supported by the Client
+		at the Revocation Endpoint
 	      </t>
 	      <t>
 		Change Controller: OpenID Foundation Artifact Binding Working Group - openid-specs-ab@lists.openid.net
@@ -1143,8 +1206,18 @@
       <t>[[ To be removed from the approved Final Specification ]]</t>
 
       <t>
+	-03
+	<list style="symbols">
+	  <t>
+	    Added <spanx style="verb">introspection_endpoint_auth_methods_supported</spanx>
+	    and <spanx style="verb">revocation_endpoint_auth_methods_supported</spanx>.
+	  </t>
+	</list>
+      </t>
+
+      <t>
 	-02
-  <list style="symbols">
+	<list style="symbols">
 	  <t>
 	    Added multi-valued metadata parameters based on single-valued metadata parameters
 	    in <xref target="CIBA.Core"/>, <xref target="JARM"/>, and <xref target="RFC9701"/>.
