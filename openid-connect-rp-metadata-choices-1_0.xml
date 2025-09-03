@@ -58,7 +58,7 @@
       </address>
     </author>
 
-    <date day="30" month="August" year="2025" />
+    <date day="2" month="September" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -434,20 +434,21 @@
       <t>
 	It is a consensus position within the OpenID Connect working group that
 	it was a mistake to create separate
-	<spanx style="verb">revocation_endpoint_auth_method</spanx> and
-	<spanx style="verb">introspection_endpoint_auth_method</spanx>
-	Client Metadata parameters.
+	<spanx style="verb">revocation_endpoint_auth_methods_supported</spanx> and
+	<spanx style="verb">introspection_endpoint_auth_methods_supported</spanx>
+	Authorization Server Metadata parameters in <xref target="RFC8414"/>.
 	This aligns with the decision by the OAuth Working group to use the
 	<spanx style="verb">token_endpoint_auth_methods_supported</spanx> and
-	<spanx style="verb">token_endpoint_auth_method</spanx> parameters
-	to describe the capabilities of the Pushed Authorization Request (PAR) Endpoint,
+	<spanx style="verb">token_endpoint_auth_method</spanx> metadata parameters
+	to describe the capabilities of the
+	Pushed Authorization Request (PAR) Endpoint <xref target="RFC9126"/>,
 	rather than creating new parameters that were PAR-specific.
       </t>
       <t>
 	Consequently, this specification does not create
 	<spanx style="verb">revocation_endpoint_auth_methods_supported</spanx> or
 	<spanx style="verb">introspection_encryption_enc_values_supported</spanx>
-	endpoints.
+	Client Metadata parameters.
       </t>
     </section>
 
@@ -1130,6 +1131,7 @@
     <references title="Informative References">
 
       <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8414.xml"/>
 
     </references>
 
