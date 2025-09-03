@@ -37,7 +37,7 @@
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 6.0.1
-    platformdirs 4.3.8
+    platformdirs 4.4.0
     pycountry 24.6.1
     PyYAML 6.0.1
     requests 2.31.0
@@ -1233,7 +1233,7 @@ li > p:last-of-type:only-child {
 <thead><tr>
 <td class="left"></td>
 <td class="center">OpenID Connect RP Metadata Choices</td>
-<td class="right">August 2025</td>
+<td class="right">September 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Jones, et al.</td>
@@ -1248,7 +1248,7 @@ li > p:last-of-type:only-child {
 <dd class="workgroup">OpenID Connect Working Group</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-08-30" class="published">30 August 2025</time>
+<time datetime="2025-09-02" class="published">2 September 2025</time>
     </dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
@@ -1716,19 +1716,20 @@ li > p:last-of-type:only-child {
 <p id="section-3-2">
  It is a consensus position within the OpenID Connect working group that
  it was a mistake to create separate
- <code>revocation_endpoint_auth_method</code> and
- <code>introspection_endpoint_auth_method</code>
- Client Metadata parameters.
+ <code>revocation_endpoint_auth_methods_supported</code> and
+ <code>introspection_endpoint_auth_methods_supported</code>
+ Authorization Server Metadata parameters in <span>[<a href="#RFC8414" class="cite xref">RFC8414</a>]</span>.
  This aligns with the decision by the OAuth Working group to use the
  <code>token_endpoint_auth_methods_supported</code> and
- <code>token_endpoint_auth_method</code> parameters
- to describe the capabilities of the Pushed Authorization Request (PAR) Endpoint,
+ <code>token_endpoint_auth_method</code> metadata parameters
+ to describe the capabilities of the
+ Pushed Authorization Request (PAR) Endpoint <span>[<a href="#RFC9126" class="cite xref">RFC9126</a>]</span>,
  rather than creating new parameters that were PAR-specific.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">
  Consequently, this specification does not create
  <code>revocation_endpoint_auth_methods_supported</code> or
  <code>introspection_encryption_enc_values_supported</code>
- endpoints.<a href="#section-3-3" class="pilcrow">¶</a></p>
+ Client Metadata parameters.<a href="#section-3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ImplementationConsiderations">
@@ -2282,8 +2283,12 @@ li > p:last-of-type:only-child {
         </h3>
 <dl class="references">
 <dt id="RFC7591">[RFC7591]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Richer, J., Ed.</span>, <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, <span class="refAuthor">Machulak, M.</span>, and <span class="refAuthor">P. Hunt</span>, <span class="refTitle">"OAuth 2.0 Dynamic Client Registration Protocol"</span>, <span class="seriesInfo">RFC 7591</span>, <span class="seriesInfo">DOI 10.17487/RFC7591</span>, <time datetime="2015-07" class="refDate">July 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7591">https://www.rfc-editor.org/info/rfc7591</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8414">[RFC8414]</dt>
+      <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Sakimura, N.</span>, and <span class="refAuthor">J. Bradley</span>, <span class="refTitle">"OAuth 2.0 Authorization Server Metadata"</span>, <span class="seriesInfo">RFC 8414</span>, <span class="seriesInfo">DOI 10.17487/RFC8414</span>, <time datetime="2018-06" class="refDate">June 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc8414">https://www.rfc-editor.org/info/rfc8414</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
