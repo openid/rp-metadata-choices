@@ -447,7 +447,7 @@
       <t>
 	Consequently, this specification does not create
 	<spanx style="verb">revocation_endpoint_auth_methods_supported</spanx> or
-	<spanx style="verb">introspection_encryption_enc_values_supported</spanx>
+	<spanx style="verb">introspection_endpoint_auth_methods_supported</spanx>
 	Client Metadata parameters.
       </t>
     </section>
