@@ -47,7 +47,7 @@
       <organization abbrev="Yubico">Yubico</organization>
       <address>
         <email>ve7jtb@ve7jtb.com</email>
-        <uri>http://www.thread-safe.com/</uri>
+        <uri>https://www.linkedin.com/in/ve7jtb/</uri>
       </address>
     </author>
 
@@ -58,7 +58,7 @@
       </address>
     </author>
 
-    <date day="20" month="December" year="2025" />
+    <date day="22" month="December" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -1255,7 +1255,7 @@
 	Vladimir Dzhuvinov,
 	Michael Fraser,
 	Joseph Heenan,
-	Eduardo Perottoni
+	Eduardo Perottoni,
 	and
 	Stefan Santesson.
       </t>
