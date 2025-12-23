@@ -26,7 +26,7 @@
 
   <front>
     <title abbrev="OpenID Connect RP Metadata Choices">OpenID Connect
-    Relying Party Metadata Choices 1.0 - draft 02</title>
+    Relying Party Metadata Choices 1.0 - draft 03</title>
 
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
       <organization abbrev="Self-Issued Consulting">Self-Issued Consulting</organization>
@@ -58,7 +58,7 @@
       </address>
     </author>
 
-    <date day="2" month="September" year="2025" />
+    <date day="19" month="September" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
