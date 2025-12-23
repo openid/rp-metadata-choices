@@ -26,7 +26,7 @@
 
   <front>
     <title abbrev="OpenID Connect RP Metadata Choices">OpenID Connect
-    Relying Party Metadata Choices 1.0 - draft 02</title>
+    Relying Party Metadata Choices 1.0 - draft 04</title>
 
     <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
       <organization abbrev="Self-Issued Consulting">Self-Issued Consulting</organization>
@@ -58,7 +58,7 @@
       </address>
     </author>
 
-    <date day="2" month="September" year="2025" />
+    <date day="20" month="December" year="2025" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -1183,6 +1183,17 @@
       <t>[[ To be removed from the approved Final Specification ]]</t>
 
       <t>
+	-04
+	<list style="symbols">
+	  <t>
+	    Fixed an error in the metadata parameter name not defined by the specification, changing it from
+      <spanx style="verb">introspection_encryption_enc_values_supported</spanx> to
+      <spanx style="verb">introspection_endpoint_auth_methods_supported</spanx>.
+	  </t>
+	</list>
+        </t>
+
+      <t>
 	-03
 	<list style="symbols">
 	  <t>
@@ -1244,6 +1255,7 @@
 	Vladimir Dzhuvinov,
 	Michael Fraser,
 	Joseph Heenan,
+	Eduardo Perottoni
 	and
 	Stefan Santesson.
       </t>
