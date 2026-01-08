@@ -58,7 +58,7 @@
       </address>
     </author>
 
-    <date day="22" month="December" year="2025" />
+    <date day="8" month="January" year="2026" />
 
     <workgroup>OpenID Connect Working Group</workgroup>
 
@@ -963,7 +963,7 @@
 	  </author>
 
 	  <author fullname="Michael B. Jones" initials="M.B." surname="Jones">
-	    <organization abbrev="Self-Issued Consulting">Self-Issued Consulting</organization>
+	    <organization>Self-Issued Consulting</organization>
 	    <address>
 	      <email>michael_b_jones@hotmail.com</email>
 	      <uri>https://self-issued.info/</uri>
@@ -983,7 +983,7 @@
 	    <organization abbrev="Yubico">Yubico</organization>
 	    <address>
 	      <email>ve7jtb@ve7jtb.com</email>
-	      <uri>http://www.thread-safe.com/</uri>
+	      <uri>https://www.linkedin.com/in/ve7jtb/</uri>
 	    </address>
 	  </author>
 
@@ -999,11 +999,11 @@
 	    <organization>Connect2id</organization>
 	    <address>
 	      <email>vladimir@connect2id.com</email>
-	      <uri>https://twitter.com/dzhuvi</uri>
+	      <uri>https://www.linkedin.com/in/vladimirdzhuvinov/</uri>
 	    </address>
 	  </author>
 
-          <date day="5" month="March" year="2025"/>
+          <date day="4" month="December" year="2025"/>
         </front>
       </reference>
 
@@ -1137,7 +1137,7 @@
 
     <section anchor="Notices" title="Notices">
       <t>
-        Copyright (c) 2025 The OpenID Foundation.
+        Copyright (c) 2026 The OpenID Foundation.
       </t>
       <t>
         The OpenID Foundation (OIDF) grants to any Contributor, developer,
